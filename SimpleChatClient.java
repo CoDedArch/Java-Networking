@@ -35,7 +35,7 @@ public class SimpleChatClient {
         mainPanel.add(outgoing);
         mainPanel.add(sendButton);
         setUpNetworking();
-
+        
         Thread readerThread = new Thread(new incomingReader());
         readerThread.start();
 
@@ -75,7 +75,7 @@ public class SimpleChatClient {
             String message;
             try {
                 while((message = reader.readLine()) != null) {
-                    System.out.println("read " + message);
+                    System.out.println("read from the client" + message);
                     incoming.append(message);
                 }
             } catch (Exception ex) {
