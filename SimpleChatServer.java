@@ -1,6 +1,10 @@
-import java.io.*;
-import java.util.*;
-import java.net.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class SimpleChatServer {
     ArrayList<Object> clientOutputStreams;
@@ -37,7 +41,7 @@ public class SimpleChatServer {
         clientOutputStreams = new ArrayList<Object>();
         try{
             ServerSocket serverSock = new ServerSocket(5000);
-            while(true) {
+            do {
                 Socket clientSocket = serverSock.accept();
                 PrintWriter writer = new PrintWriter(clientSocket.getOutputStream());
                 clientOutputStreams.add(writer);
@@ -45,12 +49,12 @@ public class SimpleChatServer {
                 Thread t = new Thread(new ClientHandler(clientSocket));
                 t.start();
                 System.out.println("Got a connection");
-            }
+            } while (true);
         }catch (Exception ex){ex.printStackTrace();}
     }
 
     public void tellEveryone (String message) {
-        Iterator it = clientOutputStreams.iterator();
+        Iterator<Object> it = clientOutputStreams.iterator();
         System.out.println(it.hasNext());
         while(it.hasNext()) {
             try{

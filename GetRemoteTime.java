@@ -1,18 +1,18 @@
-import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
-import java.net.*;
-import java.io.*;
-import java.util.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.Socket;
+import java.net.UnknownHostException;
+import java.util.Scanner;
 
 public class GetRemoteTime extends JFrame 
         implements ActionListener {
-            private JTextField hostInput;
-            private JTextArea display;
-            private JButton timeButton;
-            private JButton exitButton;
-            private JPanel buttonPanel;
-            private static Socket socket = null;
+            private final JTextField hostInput;
+            private final JTextArea display;
+    private final JButton exitButton;
+    private static Socket socket = null;
 
             public static void main(String[] args) {
                 GetRemoteTime frame = new GetRemoteTime();
@@ -46,14 +46,14 @@ public class GetRemoteTime extends JFrame
 
                 display = new JTextArea(10, 15);
                 //Following two lines ensures that word-wrapping
-                //occurs withing the JtextArea..
+                //occurs withing the JTextArea..
                 display.setLineWrap(true);
                 display.setWrapStyleWord(true);
 
                 add(new JScrollPane(display), BorderLayout.CENTER);
 
-                buttonPanel = new JPanel();
-                timeButton  = new JButton("Get date and time");
+                JPanel buttonPanel = new JPanel();
+                JButton timeButton = new JButton("Get date and time");
                 timeButton.addActionListener(this);
                 buttonPanel.add(timeButton);
 
@@ -83,7 +83,7 @@ public class GetRemoteTime extends JFrame
                     Scanner input =
                         new Scanner(socket.getInputStream());
 
-                    //accept the hos'ts response via the stream
+                    //accept the hosts response via the stream
                     theTime = input.nextLine();
 
                     //add the host's response to the text in 
@@ -97,7 +97,7 @@ public class GetRemoteTime extends JFrame
                     hostInput.setText("");
                 }
                 catch(IOException ioEx) {
-                    display.append(ioEx.toString() + "\n");
+                    display.append(ioEx + "\n");
                 }
                 finally {
                     try{
