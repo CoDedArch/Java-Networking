@@ -1,4 +1,4 @@
-/*
+package com.tcpEcho;/*
  * this is a server app that listens to none graphical applications
  */
 

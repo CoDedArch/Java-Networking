@@ -1,5 +1,5 @@
 #iDEA
-.idea
+.idea/
 #Out folder
 /out
 # Default ignored files
@@ -10,3 +10,5 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+#DS_Store
+**/.DS_Store
