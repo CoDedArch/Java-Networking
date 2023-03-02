@@ -2,7 +2,7 @@
 /out
 # Default ignored files
 /shelf/
-/.idea/
+/.idea
 # Editor-based HTTP Client requests
 /httpRequests/
 # Datasource local storage ignored files
