@@ -1,4 +1,4 @@
-/*
+package com.tcpEcho;/*
  * *this is a none graphical version of the client making request to the server  
  * */
 
@@ -7,7 +7,7 @@ import java.util.*;
 import java.net.*;
 
 
-public class TCPEchoCLient {
+public class TCPEchoClient {
     private static InetAddress host;
     private static final int PORT = 1234;
 

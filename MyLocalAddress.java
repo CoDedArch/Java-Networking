@@ -1,6 +1,8 @@
 
-//this codes is to find the address of my local machine
-import java.net.*;
+//this code find's the address of my local machine
+
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 
 public class MyLocalAddress{
@@ -8,7 +10,7 @@ public class MyLocalAddress{
     try {
         InetAddress address = InetAddress.getLocalHost();
         System.out.println(address);
-    }catch(UnknownHostException uhex) {
+    }catch(UnknownHostException u_host) {
         System.out.println(
                 "could not find local address"
         );
