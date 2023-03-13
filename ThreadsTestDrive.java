@@ -1,7 +1,3 @@
-import java.io.*;
-import java.util.*;
-import javax.swing.*;
-
 public class ThreadsTestDrive extends Thread {    
     public static void main(String[] args) {
         // have two threads 
@@ -16,8 +12,8 @@ public class ThreadsTestDrive extends Thread {
 
     public void run()
     {
+        int thread0 = 0;
         int thread1 = 0;
-        int thread2 = 0;
         int pause;
         for (int i = 0; i < 10; i++)
         {
@@ -25,6 +21,11 @@ public class ThreadsTestDrive extends Thread {
                 System.out.println(
                     getName() + " being executed."
                 );
+
+                if (getName().equals("Thread-0"))
+                    thread0++;
+                if (getName().equals("Thread-1"))
+                    thread1++;
                 pause = (int)(Math.random()*3000);
                 sleep(pause);
             }
@@ -33,5 +34,7 @@ public class ThreadsTestDrive extends Thread {
                 System.out.println(inExp);
             }
         }
+        System.out.println("Thread-0: "+ thread0);
+        System.out.println("Thread-1: "+ thread1);
     }
 }
